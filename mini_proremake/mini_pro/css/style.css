@@ -1,0 +1,373 @@
+ /********** Template CSS **********/
+:root {
+    --primary: #D81324; /* กำหนดสีหลักของเว็บไซต์ */
+    --secondary: #0B2154; /* กำหนดสีรองของเว็บไซต์ */
+    --light: #F2F2F2; /* กำหนดสีพื้นหลังหรือสีอ่อน */
+    --dark: #111111; /* กำหนดสีที่มืดที่สุด */
+}
+
+.fw-medium {
+    font-weight: 600 !important; /* กำหนดน้ำหนักตัวอักษรเป็น medium (600) */
+}
+
+.back-to-top {
+    position: fixed; /* ทำให้ปุ่มกลับไปที่ด้านบนของหน้าจอเป็นแบบติดอยู่ที่ตำแหน่ง */
+    display: none; /* ซ่อนปุ่มนี้โดยเริ่มต้น */
+    right: 45px; /* ระยะห่างจากขอบขวาของหน้าจอ */
+    bottom: 45px; /* ระยะห่างจากขอบล่างของหน้าจอ */
+    z-index: 99; /* ตั้งค่า z-index ให้กับปุ่มเพื่อให้มันอยู่ด้านบน */
+}
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0; /* ตั้งค่าให้โปร่งใส */
+    visibility: hidden; /* ซ่อน spinner */
+    transition: opacity .5s ease-out, visibility 0s linear .5s; /* การเปลี่ยนแปลงระหว่างการแสดง/ซ่อน */
+    z-index: 99999; /* ตั้งค่า z-index ให้สูงมาก */
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s; /* เมื่อแสดง spinner */
+    visibility: visible; /* ให้แสดง spinner */
+    opacity: 1; /* ทำให้ spinner มองเห็นได้ */
+}
+
+/*** Button ***/
+.btn {
+    font-weight: 500; /* กำหนดน้ำหนักตัวอักษรเป็น medium */
+    text-transform: uppercase; /* ทำให้ข้อความในปุ่มเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+    transition: .5s; /* เพิ่มการเปลี่ยนแปลงที่นุ่มนวล */
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF; /* เปลี่ยนข้อความในปุ่มให้เป็นสีขาว */
+}
+
+.btn-square {
+    width: 38px; /* กำหนดความกว้างของปุ่มให้เป็น 38px */
+    height: 38px; /* กำหนดความสูงของปุ่มให้เป็น 38px */
+}
+
+.btn-sm-square {
+    width: 32px; /* กำหนดความกว้างของปุ่มเล็กให้เป็น 32px */
+    height: 32px; /* กำหนดความสูงของปุ่มเล็กให้เป็น 32px */
+}
+
+.btn-lg-square {
+    width: 48px; /* กำหนดความกว้างของปุ่มใหญ่ให้เป็น 48px */
+    height: 48px; /* กำหนดความสูงของปุ่มใหญ่ให้เป็น 48px */
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0; /* ไม่เพิ่ม padding ภายในปุ่ม */
+    display: flex; /* ใช้ flexbox */
+    align-items: center; /* จัดตำแหน่งปุ่มในแนวตั้ง */
+    justify-content: center; /* จัดตำแหน่งปุ่มในแนวนอน */
+    font-weight: normal; /* กำหนดน้ำหนักตัวอักษรเป็นปกติ */
+    border-radius: 2px; /* เพิ่มมุมโค้งให้กับปุ่ม */
+}
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none; /* ลบเส้นขอบออก */
+    content: "\f107"; /* ใช้ไอคอนจาก Font Awesome */
+    font-family: "Font Awesome 5 Free"; /* ใช้ฟอนต์ Font Awesome */
+    font-weight: 900; /* ใช้ฟอนต์ตัวหนา */
+    vertical-align: middle; /* จัดตำแหน่งให้ตรงกลาง */
+    margin-left: 8px; /* เพิ่มช่องว่างด้านซ้าย */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    margin-right: 30px; /* เพิ่มช่องว่างด้านขวาของลิงก์ */
+    padding: 25px 0; /* กำหนด padding ให้กับลิงก์ */
+    color: #FFFFFF; /* สีของข้อความในลิงก์เป็นสีขาว */
+    font-size: 15px; /* ขนาดตัวอักษรในลิงก์ */
+    text-transform: uppercase; /* ทำให้ข้อความเป็นตัวพิมพ์ใหญ่ทั้งหมด */
+    outline: none; /* ลบเส้นขอบออก */
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link.active {
+    color: var(--primary); /* เปลี่ยนสีข้อความเมื่อเมาส์ไปวางหรือคลิก */
+}
+
+@media (max-width: 991.98px) {
+    .navbar-light .navbar-nav .nav-link {
+        margin-right: 0; /* ลบช่องว่างขวาของลิงก์เมื่อหน้าจอเล็ก */
+        padding: 10px 0; /* ลดขนาด padding ในลิงก์ */
+    }
+
+    .navbar-light .navbar-nav {
+        border-top: 1px solid #EEEEEE; /* เพิ่มเส้นขอบด้านบนของเมนู */
+    }
+}
+
+.navbar-light .navbar-brand,
+.navbar-light a.btn {
+    height: 75px; /* กำหนดความสูงของแบรนด์และปุ่ม */
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: var(--dark); /* กำหนดสีลิงก์เป็นสีมืด */
+    font-weight: 500; /* กำหนดน้ำหนักตัวอักษร */
+}
+
+.navbar-light.sticky-top {
+    top: -100px; /* ตั้งค่าให้ navbar เลื่อนขึ้นไปข้างบนเมื่อไม่แสดง */
+    transition: .5s; /* เพิ่มการเปลี่ยนแปลงเมื่อมีการเลื่อน */
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        border: none;
+        margin-top: 0;
+        top: 150%;
+        opacity: 0;
+        visibility: hidden;
+        transition: .5s;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        top: 100%;
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+/*** Header ***/
+.carousel-caption {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .7); /* เพิ่มพื้นหลังมืดสำหรับคำบรรยาย */
+    z-index: 1; /* กำหนด z-index ให้คำบรรยายอยู่เหนือภาพ */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%; /* ขนาดของปุ่ม prev และ next */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 3rem; /* ขนาดของไอคอน prev และ next */
+    height: 3rem; /* ขนาดความสูงของไอคอน */
+}
+
+@media (max-width: 768px) {
+    #header-carousel .carousel-item {
+        position: relative;
+        min-height: 450px; /* กำหนดความสูงขั้นต่ำของภาพ */
+    }
+    
+    #header-carousel .carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ทำให้ภาพครอบคลุมพื้นที่ทั้งหมด */
+    }
+}
+
+.page-header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* ทำให้ภาพพื้นหลังครอบคลุมพื้นที่ทั้งหมด */
+}
+
+.page-header-inner {
+    background: rgba(0, 0, 0, .7); /* เพิ่มพื้นหลังทึบที่มีความมืด */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--light); /* กำหนดสีของจุดเชื่อมโยงให้เป็นสีอ่อน */
+}
+
+/*** Facts ***/
+.fact {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/chris-porter--At4vx7KbAI-unsplash.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover; /* ตั้งค่าให้พื้นหลังแสดงเป็นภาพและครอบคลุมพื้นที่ */
+}
+
+/*** Service ***/
+.service .nav .nav-link {
+    background: var(--light); /* กำหนดพื้นหลังของลิงก์ */
+    transition: .5s; /* เพิ่มการเปลี่ยนแปลงที่นุ่มนวล */
+}
+
+.service .nav .nav-link.active {
+    background: var(--primary); /* เปลี่ยนพื้นหลังเมื่อเลือก */
+}
+
+.service .nav .nav-link.active h4 {
+    color: #FFFFFF !important; /* เปลี่ยนสีข้อความเมื่อลิงก์ถูกเลือก */
+}
+
+/*** Booking ***/
+.booking {
+    background: linear-gradient(rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)), url(../img/chris-porter--At4vx7KbAI-unsplash.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.bootstrap-datetimepicker-widget.bottom {
+    top: auto !important; /* ปรับตำแหน่งของปฏิทิน */
+}
+
+.bootstrap-datetimepicker-widget .table * {
+    border-bottom-width: 0px; /* ลบเส้นขอบที่ด้านล่าง */
+}
+
+.bootstrap-datetimepicker-widget .table th {
+    font-weight: 500; /* กำหนดน้ำหนักตัวอักษรในหัวตาราง */
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    padding: 10px;
+    border-radius: 2px; /* เพิ่มมุมโค้งให้เมนู */
+}
+
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background: var(--primary); /* เปลี่ยนพื้นหลังเมื่อเลือกวันที่ */
+}
+
+.bootstrap-datetimepicker-widget table td.today::before {
+    border-bottom-color: var(--primary); /* เปลี่ยนสีของเส้นขอบวันที่วันนี้ */
+}
+
+/*** Team ***/
+.team-item .team-overlay {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary);
+    transform: scale(0);
+    transition: .5s; /* เพิ่มการแสดงผลที่นุ่มนวล */
+}
+
+.team-item:hover .team-overlay {
+    transform: scale(1); /* เมื่อเลื่อนเมาส์ไปที่ทีมให้แสดง overlay */
+}
+
+.team-item .team-overlay .btn {
+    color: var(--primary);
+    background: #FFFFFF; /* กำหนดสีปุ่ม */
+}
+
+.team-item .team-overlay .btn:hover {
+    color: #FFFFFF;
+    background: var(--secondary); /* เปลี่ยนสีของปุ่มเมื่อ hover */
+}
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-text,
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    transition: .5s; /* เพิ่มการเปลี่ยนแปลงที่นุ่มนวล */
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text {
+    background: var(--primary) !important; /* เปลี่ยนพื้นหลังของข้อความทบทวน */
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    color: #FFFFFF !important; /* เปลี่ยนสีข้อความ */
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center; /* จัดเรียง dot ของ carousel */
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #CCCCCC;
+    transition: .5s; /* เพิ่มการเปลี่ยนแปลงที่นุ่มนวล */
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: var(--primary);
+    border-color: var(--primary); /* เปลี่ยนสีของ dot เมื่อเป็น active */
+}
+
+/*** Footer ***/
+.footer {
+    background: linear-gradient(rgba(0, 0, 0, .9), rgba(0, 0, 0, .9)), url(../img/carousel-bg-1.jpg) center center no-repeat;
+    background-size: cover;
+}
+
+.footer .btn.btn-social {
+    margin-right: 5px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light);
+    border: 1px solid #FFFFFF;
+    border-radius: 35px;
+    transition: .3s;
+}
+
+.footer .btn.btn-social:hover {
+    color: var(--primary);
+}
+
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105"; /* ใช้ไอคอน Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.footer .btn.btn-link:hover {
+    letter-spacing: 1px;
+    box-shadow: none; /* เพิ่มการแสดงผลที่สวยงามเมื่อ hover */
+}
+
+.footer .copyright {
+    padding: 25px 0;
+    font-size: 15px;
+    border-top: 1px solid rgba(256, 256, 256, .1); /* เพิ่มเส้นขอบด้านบน */
+}
+
+.footer .copyright a {
+    color: var(--light);
+}
+
+.footer .footer-menu a {
+    margin-right: 15px;
+    padding-right: 15px;
+    border-right: 1px solid rgba(255, 255, 255, .3); /* เพิ่มเส้นขอบระหว่างเมนู */
+}
+
+.footer .footer-menu a:last-child {
+    margin-right: 0;
+    padding-right: 0;
+    border-right: none; /* ลบเส้นขอบจากลิงก์สุดท้าย */
+}
